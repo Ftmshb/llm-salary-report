@@ -1,0 +1,21 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read data
+df = pd.read_csv("salary_data.csv")
+
+# Create pivot table
+pivot = df.pivot(index="Country", columns="Job", values="Annual Salary (USD)")
+
+# Show table
+print(pivot)
+
+# Plot chart
+pivot.plot(kind="bar", figsize=(10,6))
+plt.title("Annual Salaries of Tech Jobs by Country")
+plt.ylabel("Annual Salary (USD)")
+plt.xlabel("Country")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig("salary_chart.png")
+plt.show()
